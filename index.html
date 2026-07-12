@@ -3,398 +3,510 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07262c" />
     <meta
       name="description"
-      content="万羽旋的个人网站，展示万羽旋的教育背景、实习经历、项目经历、获奖情况与专业技能。"
+      content="万羽旋的个人作品集与简历，展示 AI 产品、数据平台、科研与工程实践。"
     />
-    <title>Welcome to Yuxuan's website</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <title>welcome!</title>
+    <link rel="stylesheet" href="styles.css?v=20260713-5" />
+    <script src="script.js?v=20260713-5" defer></script>
   </head>
   <body class="lang-zh">
+    <a class="skip-link" href="#main-content">
+      <span data-lang="zh">跳至主要内容</span>
+      <span data-lang="en">Skip to content</span>
+    </a>
+
+    <div class="ambient-scene" aria-hidden="true">
+      <video
+        id="background-video"
+        class="background-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source src="1.mp4" type="video/mp4" />
+      </video>
+      <div class="ambient-tint"></div>
+      <div class="ambient-glow"></div>
+      <div class="ambient-grain"></div>
+    </div>
+
     <header class="site-header">
-      <div class="language-switch" aria-label="Language switch">
-        <button class="lang-button is-active" type="button" data-set-lang="zh">中文</button>
-        <button class="lang-button" type="button" data-set-lang="en">EN</button>
+      <div class="header-actions">
+        <button
+          class="video-toggle"
+          type="button"
+          data-video-toggle
+          data-state="playing"
+          aria-label="暂停动态背景"
+        >
+          <span class="video-toggle-icon" aria-hidden="true"><i></i><i></i></span>
+          <span class="video-toggle-label">暂停动态</span>
+        </button>
+
+        <div class="language-switch" aria-label="Language switch">
+          <button class="lang-button is-active" type="button" data-set-lang="zh" aria-pressed="true">
+            中
+          </button>
+          <button class="lang-button" type="button" data-set-lang="en" aria-pressed="false">
+            EN
+          </button>
+        </div>
       </div>
     </header>
 
-    <nav class="side-nav" aria-label="Section navigation">
-      <a href="#profile" class="is-active">
-        <span class="node"></span>
+    <nav class="chapter-nav" aria-label="Section navigation">
+      <a href="#profile" class="is-active" data-nav-link>
+        <span class="chapter-node" aria-hidden="true"></span>
         <span data-lang="zh">简介</span>
         <span data-lang="en">Profile</span>
       </a>
-      <a href="#experience">
-        <span class="node"></span>
-        <span data-lang="zh">实习</span>
+      <a href="#experience" data-nav-link>
+        <span class="chapter-node" aria-hidden="true"></span>
+        <span data-lang="zh">经历</span>
         <span data-lang="en">Experience</span>
       </a>
-      <a href="#skills">
-        <span class="node"></span>
-        <span data-lang="zh">技能</span>
-        <span data-lang="en">Skills</span>
-      </a>
-      <a href="#awards">
-        <span class="node"></span>
-        <span data-lang="zh">荣誉</span>
-        <span data-lang="en">Awards</span>
-      </a>
-      <a href="#research">
-        <span class="node"></span>
-        <span data-lang="zh">科研</span>
-        <span data-lang="en">Research</span>
-      </a>
-      <a href="#projects">
-        <span class="node"></span>
+      <a href="#projects" data-nav-link>
+        <span class="chapter-node" aria-hidden="true"></span>
         <span data-lang="zh">项目</span>
         <span data-lang="en">Projects</span>
       </a>
+      <a href="#skills" data-nav-link>
+        <span class="chapter-node" aria-hidden="true"></span>
+        <span data-lang="zh">能力</span>
+        <span data-lang="en">Skills</span>
+      </a>
+      <a href="#research" data-nav-link>
+        <span class="chapter-node" aria-hidden="true"></span>
+        <span data-lang="zh">科研</span>
+        <span data-lang="en">Research</span>
+      </a>
+      <a href="#awards" data-nav-link>
+        <span class="chapter-node" aria-hidden="true"></span>
+        <span data-lang="zh">荣誉</span>
+        <span data-lang="en">Awards</span>
+      </a>
     </nav>
 
-    <main id="top">
-      <section class="hero" id="profile" aria-label="Hero">
-        <div class="sky" aria-hidden="true">
-          <div class="cloud cloud-a"></div>
-          <div class="cloud cloud-b"></div>
-          <div class="cloud cloud-c"></div>
-          <div class="cloud cloud-d"></div>
-          <div class="cloud cloud-e"></div>
-          <div class="cloud cloud-f"></div>
-          <div class="cloud cloud-g"></div>
-          <div class="horizon"></div>
-        </div>
-        <div class="hero-layout">
-          <figure class="hero-photo">
-            <img src="assets/profile-photo.jpg" alt="万羽旋的个人照片" />
-          </figure>
-          <div class="hero-content">
-            <h1 data-lang="zh">万羽旋</h1>
+    <main id="main-content">
+      <section class="hero" id="profile" aria-labelledby="hero-title-zh">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <h1 id="hero-title-zh" data-lang="zh">万羽旋</h1>
             <h1 data-lang="en">Yuxuan Wan</h1>
-            <div class="hero-contact" aria-label="Contact information">
-              <div class="hero-education">
-                <div class="education-line">
-                  <strong data-lang="zh">香港中文大学（深圳）</strong>
-                  <strong data-lang="en">The Chinese University of Hong Kong, Shenzhen</strong>
-                  <span data-lang="zh">硕士 · 计算社会科学</span>
-                  <span data-lang="en">Master · Computational Social Science</span>
-                  <small data-lang="zh">2025.09 - 2027.06</small>
-                  <small data-lang="en">Sep 2025 - Jun 2027</small>
-                </div>
-                <div class="education-line">
-                  <strong data-lang="zh">天津理工大学</strong>
-                  <strong data-lang="en">Tianjin University of Technology</strong>
-                  <span data-lang="zh">本科 · 计算机科学与技术</span>
-                  <span data-lang="en">Bachelor · Computer Science and Technology</span>
-                  <small data-lang="zh">2021.09 - 2025.06</small>
-                  <small data-lang="en">Sep 2021 - Jun 2025</small>
-                </div>
-              </div>
+            <p class="hero-summary" data-lang="zh">
+              计算机与计算社会科学交叉背景，关注 AI 产品、人机交互与真实场景之间的连接。
+            </p>
+            <p class="hero-summary" data-lang="en">
+              An interdisciplinary background in computer science and computational social science, focused on AI products, human-computer interaction, and real-world applications.
+            </p>
+
+            <div class="hero-actions">
+              <a class="primary-link" href="#experience">
+                <span data-lang="zh">走进我的经历</span>
+                <span data-lang="en">Explore my journey</span>
+                <i aria-hidden="true">↘</i>
+              </a>
+              <a class="text-link" href="#projects">
+                <span data-lang="zh">查看精选项目</span>
+                <span data-lang="en">View selected work</span>
+                <i aria-hidden="true">→</i>
+              </a>
             </div>
           </div>
         </div>
+
+        <a class="scroll-cue" href="#about" aria-label="Scroll to profile details">
+          <i aria-hidden="true"></i>
+        </a>
       </section>
 
-      <div class="content-shell" id="overview">
-        <section class="section" id="experience" aria-labelledby="experience-title">
-          <div class="section-heading">
-            <h2 id="experience-title" data-lang="zh">实习经历</h2>
-            <h2 data-lang="en">Internships</h2>
+      <div class="shore-stage">
+        <div class="page-shell">
+        <section class="story-section about-section reveal" id="about" aria-labelledby="about-title-zh">
+          <header class="section-heading">
+            <div>
+              <h2 id="about-title-zh" data-lang="zh">关于我</h2>
+              <h2 data-lang="en">About me</h2>
+            </div>
+          </header>
+
+          <div class="about-grid">
+            <div class="about-copy">
+              <p data-lang="zh">
+                我拥有计算机与计算社会科学交叉背景，持续在需求、AI 与机器人之间寻找连接。先后在腾讯、Unity 中国与北京智源人工智能研究院参与实习工作。
+              </p>
+              <p data-lang="en">
+                I combine computer science and computational social science, looking for meaningful connections across user needs, AI, and robotics. I have interned at Tencent, Unity China, and BAAI.
+              </p>
+            </div>
           </div>
+
+          <div class="experience-list education-list" aria-label="Education">
+            <article class="experience-card education-card">
+              <div class="experience-meta">
+                <time>2025.09 — 2027.06</time>
+                <span data-lang="zh">深圳</span>
+                <span data-lang="en">Shenzhen</span>
+              </div>
+              <div class="experience-content">
+                <div class="education-copy">
+                  <h3 data-lang="zh">香港中文大学（深圳）</h3>
+                  <h3 data-lang="en">The Chinese University of Hong Kong, Shenzhen</h3>
+                  <p class="education-degree" data-lang="zh">硕士 · 计算社会科学（人机交互方向）</p>
+                  <p class="education-degree" data-lang="en">Master · Computational Social Science, Human-Computer Interaction</p>
+                </div>
+              </div>
+            </article>
+            <article class="experience-card education-card">
+              <div class="experience-meta">
+                <time>2021.09 — 2025.06</time>
+                <span data-lang="zh">天津</span>
+                <span data-lang="en">Tianjin</span>
+              </div>
+              <div class="experience-content">
+                <div class="education-copy">
+                  <h3 data-lang="zh">天津理工大学</h3>
+                  <h3 data-lang="en">Tianjin University of Technology</h3>
+                  <p class="education-degree" data-lang="zh">本科 · 计算机科学与技术</p>
+                  <p class="education-degree" data-lang="en">Bachelor · Computer Science and Technology</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="story-section reveal" id="experience" aria-labelledby="experience-title-zh">
+          <header class="section-heading">
+            <div>
+              <h2 id="experience-title-zh" data-lang="zh">实习经历</h2>
+              <h2 data-lang="en">Experience</h2>
+            </div>
+          </header>
+
           <div class="experience-list">
-            <article class="experience-item">
-              <div class="role-line">
-                <div>
-                  <h3 data-lang="zh">Unity 中国</h3>
-                  <h3 data-lang="en">Unity China</h3>
-                  <p data-lang="zh">产品经理实习生 · 团结引擎</p>
-                  <p data-lang="en">Product Manager Intern · Tuanjie Engine</p>
+            <article class="experience-card reveal">
+              <div class="experience-meta">
+                <time>2026.05 — 2026.07</time>
+                <span data-lang="zh">深圳</span>
+                <span data-lang="en">Shenzhen</span>
+              </div>
+              <div class="experience-content">
+                <div class="role-heading">
+                  <div>
+                    <h3 data-lang="zh">腾讯</h3>
+                    <h3 data-lang="en">Tencent</h3>
+                    <p data-lang="zh">产品策划实习生 · 腾讯云</p>
+                    <p data-lang="en">Product Planning Intern · Tencent Cloud</p>
+                  </div>
                 </div>
-                <span data-lang="zh">2025.12 - 2026.03 · 上海</span>
-                <span data-lang="en">Dec 2025 - Mar 2026 · Shanghai</span>
+                <ul data-lang="zh">
+                  <li>梳理认证浏览、报名、课程学习、考试预约、正式考试和分数查询的完整用户链路，输出标准化 SOP 并定位体验断点。</li>
+                  <li>主导认证官网的信息架构与功能界面重构，借助 AI 工具完成高保真可交互 Demo，为内部评审和 UI 设计提供参考。</li>
+                  <li>搭建考试指南文档体系，统一模板并集中管理备考资料；完成认证竞品的含金量与价格体系调研，支持定位与定价讨论。</li>
+                  <li>结合大语言模型、Knot、RAG 资料库与 BERT 模型，参与构建 AI 判题工作流，提升出题质量。</li>
+                </ul>
+                <ul data-lang="en">
+                  <li>Mapped the end-to-end certification journey from browsing to score lookup, produced a standardized SOP, and identified experience gaps.</li>
+                  <li>Redesigned the certification website's information architecture and interfaces, creating a high-fidelity interactive demo with AI tools for reviews and UI handoff.</li>
+                  <li>Built a centralized exam-guide documentation system and researched competitor value and pricing to support positioning discussions.</li>
+                  <li>Contributed to an AI grading workflow using LLMs, Knot, a RAG knowledge base, and BERT to improve question quality.</li>
+                </ul>
               </div>
-              <ul data-lang="zh">
-                <li>项目背景：Unity 中国版新功能用户手册缺失，存量英文文档汉化量大且专业名词翻译一致性差。</li>
-                <li>文档创作与部署：深度体验产品功能，负责新功能用户手册的撰写，采用 Markdown 格式进行标准化编辑，并熟练运用 Git 管理文档版本，完成手册的自动化上传与部署。</li>
-                <li>AI 辅助翻译工程：针对 Unity 海量英文文档和专有名词，调用大模型 API 并设计针对性的 Prompt 和 RAG 策略，搭建工作流，实现文档的高质量自动化汉化，有效解决人工翻译成本高、专业术语难统一的痛点。</li>
-              </ul>
-              <ul data-lang="en">
-                <li>Project context: The Unity China edition lacked user manuals for new features, while a large volume of English documentation required localization with inconsistent technical terminology.</li>
-                <li>Documentation creation and deployment: Deeply tested product features, wrote user manuals for new features, standardized editing in Markdown, used Git for version control, and completed automated upload and deployment.</li>
-                <li>AI-assisted translation engineering: For Unity's large-scale English documentation and proprietary terminology, called large-model APIs, designed targeted prompts and RAG strategies, built a workflow, and delivered high-quality automated Chinese localization, reducing manual translation cost and improving terminology consistency.</li>
-              </ul>
             </article>
 
-            <article class="experience-item">
-              <div class="role-line">
-                <div>
-                  <h3 data-lang="zh">北京智源人工智能研究院</h3>
-                  <h3 data-lang="en">Beijing Academy of Artificial Intelligence</h3>
-                  <p data-lang="zh">产品经理实习生 · 数据平台</p>
-                  <p data-lang="en">Product Manager Intern · Data Platform</p>
+            <article class="experience-card reveal">
+              <div class="experience-meta">
+                <time>2025.12 — 2026.03</time>
+                <span data-lang="zh">上海</span>
+                <span data-lang="en">Shanghai</span>
+              </div>
+              <div class="experience-content">
+                <div class="role-heading">
+                  <div>
+                    <h3 data-lang="zh">Unity 中国</h3>
+                    <h3 data-lang="en">Unity China</h3>
+                    <p data-lang="zh">产品经理实习生 · 团结引擎</p>
+                    <p data-lang="en">Product Manager Intern · Tuanjie Engine</p>
+                  </div>
                 </div>
-                <span data-lang="zh">2025.04 - 2025.08 · 北京</span>
-                <span data-lang="en">Apr 2025 - Aug 2025 · Beijing</span>
+                <ul data-lang="zh">
+                  <li>针对中国版新功能用户手册缺失、英文文档汉化量大与术语不一致等问题，梳理文档生产与本地化流程。</li>
+                  <li>深度体验产品功能并撰写新功能用户手册，使用 Markdown 标准化编辑、Git 管理版本，完成手册自动化上传与部署。</li>
+                  <li>调用大模型 API，设计 Prompt 与 RAG 策略并搭建工作流，实现海量英文文档的高质量自动化汉化，降低人工成本并统一专业术语。</li>
+                </ul>
+                <ul data-lang="en">
+                  <li>Mapped the documentation and localization workflow to address missing manuals, large-scale translation needs, and inconsistent technical terminology.</li>
+                  <li>Tested product features in depth, wrote new-feature manuals in Markdown, managed versions with Git, and completed automated upload and deployment.</li>
+                  <li>Built an LLM-powered localization workflow using model APIs, targeted prompting, and RAG to improve quality, reduce manual effort, and standardize terminology.</li>
+                </ul>
               </div>
-              <ul data-lang="zh">
-                <li>项目背景：现有数据平台功能不完善，不能满足客户提出的需求和市场推广需求。</li>
-                <li>分析 TwelveLabs 的用户场景与盈利模式，为智源智搜平台设计提供参考。</li>
-                <li>设计数据集上传、数据资产统计、用户行为统计、数据采集与自定义数据集等功能，绘制原型并撰写 PRD。</li>
-                <li>设计用户反馈与需求调研问卷，参与 8+ 场需求评审会和项目进度会。</li>
-              </ul>
-              <ul data-lang="en">
-                <li>Project context: The existing data platform had incomplete functionality and could not fully meet client requirements or go-to-market needs.</li>
-                <li>Analyzed TwelveLabs' user scenarios and business model to inform product design for the BAAI search platform.</li>
-                <li>Designed dataset upload, asset statistics, user-behavior analytics, data collection, and custom dataset features; created prototypes and PRDs.</li>
-                <li>Designed a user feedback and demand survey, and joined 8+ requirement review and progress meetings.</li>
-              </ul>
             </article>
 
-            <article class="experience-item">
-              <div class="role-line">
-                <div>
-                  <h3 data-lang="zh">统信软件技术有限公司</h3>
-                  <h3 data-lang="en">UnionTech Software Technology Co., Ltd.</h3>
-                  <p data-lang="zh">AI 产品经理实习生 · 服务器与云计算产线</p>
-                  <p data-lang="en">AI Product Manager Intern · Server and Cloud Computing Product Line</p>
+            <article class="experience-card reveal">
+              <div class="experience-meta">
+                <time>2025.04 — 2025.08</time>
+                <span data-lang="zh">北京</span>
+                <span data-lang="en">Beijing</span>
+              </div>
+              <div class="experience-content">
+                <div class="role-heading">
+                  <div>
+                    <h3 data-lang="zh">北京智源人工智能研究院</h3>
+                    <h3 data-lang="en">Beijing Academy of Artificial Intelligence</h3>
+                    <p data-lang="zh">产品经理实习生 · 数据平台</p>
+                    <p data-lang="en">Product Manager Intern · Data Platform</p>
+                  </div>
                 </div>
-                <span data-lang="zh">2024.11 - 2025.03 · 北京</span>
-                <span data-lang="en">Nov 2024 - Mar 2025 · Beijing</span>
-              </div>
-              <ul data-lang="zh">
-                <li>项目背景：开发新工具以提高产品前场定制效率，引入 AI 技术并适配潜力硬件，增强产品竞争力并扩大市场份额。</li>
-                <li>通过本地部署和公开资料研究全球主要竞争对手 AI 产品，评估功能与用户体验差异。</li>
-                <li>调研全球 AI 加速卡产品规格和市场状况，输出产品适配建议。</li>
-              </ul>
-              <ul data-lang="en">
-                <li>Project context: Developed a new tool to improve front-line customization efficiency, introduced AI capabilities, and adapted potential hardware to strengthen product competitiveness and expand market share.</li>
-                <li>Studied major global competitors by local deployment and public research, comparing product features and user experience.</li>
-                <li>Researched AI accelerator specifications and market trends, and delivered adaptation recommendations.</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section class="section" id="skills" aria-labelledby="skills-title">
-          <div class="section-heading">
-            <h2 id="skills-title" data-lang="zh">技能</h2>
-            <h2 data-lang="en">Skills</h2>
-          </div>
-          <div class="single-panel">
-            <article class="panel">
-              <div class="skill-groups">
-                <p data-lang="zh"><strong>产品工具</strong>Axure、墨刀、Visio、X-mind、Excel、Word、PPT、Tableau、R</p>
-                <p data-lang="zh"><strong>AI 与数据</strong>Python、Ollama、RAG、Prompt 工程</p>
-                <p data-lang="zh"><strong>工程能力</strong>Java、Spring Boot、MyBatis-Plus、MySQL、Linux、Git</p>
-                <p data-lang="en"><strong>Product tools</strong>Axure, MockingBot, Visio, XMind, Excel, Word, PowerPoint, Tableau, R</p>
-                <p data-lang="en"><strong>AI and data</strong>Python, Ollama, RAG, prompt engineering</p>
-                <p data-lang="en"><strong>Engineering</strong>Java, Spring Boot, MyBatis-Plus, MySQL, Linux, Git</p>
+                <ul data-lang="zh">
+                  <li>围绕现有数据平台功能不足、客户需求与市场推广需要，开展产品研究与功能规划。</li>
+                  <li>分析 TwelveLabs 的用户场景与盈利模式，为智源智搜平台设计提供参考。</li>
+                  <li>设计数据集上传、数据资产统计、用户行为统计、数据采集与自定义数据集等功能，绘制原型并撰写 PRD。</li>
+                  <li>设计用户反馈与需求调研问卷，参与 8+ 场需求评审会和项目进度会。</li>
+                </ul>
+                <ul data-lang="en">
+                  <li>Conducted product research and feature planning to close functional gaps and support client and go-to-market needs.</li>
+                  <li>Analyzed TwelveLabs' user scenarios and business model to inform the BAAI search platform.</li>
+                  <li>Designed dataset upload, asset statistics, behavior analytics, data collection, and custom datasets; delivered prototypes and PRDs.</li>
+                  <li>Designed user feedback and demand surveys and joined 8+ requirement reviews and progress meetings.</li>
+                </ul>
               </div>
             </article>
+
           </div>
         </section>
 
-        <section class="section" id="awards" aria-labelledby="awards-title">
-          <div class="section-heading">
-            <h2 id="awards-title" data-lang="zh">荣誉</h2>
-            <h2 data-lang="en">Awards</h2>
-          </div>
-          <div class="single-panel">
-            <article class="panel">
-              <ul class="award-list" data-lang="zh">
-                <li>2023 华北五省及港澳台计算机应用大赛 · 国家级一等奖（队长）</li>
-                <li>2023 全国大学生数字媒体科技作品及创意竞赛 · 国家级三等奖</li>
-                <li>2023 中国国际“互联网+”大学生创新创业大赛 · 省赛银奖（队长）</li>
-                <li>2024 网络技术挑战赛华北赛区 · 省级三等奖</li>
-                <li>2024 人民奖学金 / 优秀学生干部</li>
-                <li>2025 优秀毕业论文</li>
-              </ul>
-              <ul class="award-list" data-lang="en">
-                <li>2023 Computer Application Competition of North China, Hong Kong, Macao and Taiwan · National First Prize, Team Leader</li>
-                <li>2023 National College Digital Media Technology Works and Creativity Competition · National Third Prize</li>
-                <li>2023 China International College Students' “Internet+” Innovation and Entrepreneurship Competition · Provincial Silver Award, Team Leader</li>
-                <li>2024 Network Technology Challenge, North China Division · Provincial Third Prize</li>
-                <li>2024 People's Scholarship / Outstanding Student Cadre</li>
-                <li>2025 Outstanding Graduation Thesis</li>
-              </ul>
-            </article>
-          </div>
-        </section>
+        <section class="story-section reveal" id="projects" aria-labelledby="projects-title-zh">
+          <header class="section-heading">
+            <div>
+              <h2 id="projects-title-zh" data-lang="zh">项目经历</h2>
+              <h2 data-lang="en">Selected work</h2>
+            </div>
+          </header>
 
-        <section class="section" id="research" aria-labelledby="research-title">
-          <div class="section-heading">
-            <h2 id="research-title" data-lang="zh">科研</h2>
-            <h2 data-lang="en">Research</h2>
-          </div>
-          <div class="single-panel">
-            <article class="panel">
-              <h3 data-lang="zh">论文发表与录用</h3>
-              <h3 data-lang="en">Publications and Accepted Papers</h3>
-              <ul data-lang="zh">
-                <li>共同作者，Shuhao Mei, Xin Li, Yuxi Zhou, Jiahao Xu, Yong Zhang, Yuxuan Wan, Shan Cao, Qinghao Zhao, Shijia Geng, Junqing Xie, Shenda Hong，Deep Learning for Detecting and Early Predicting Chronic Obstructive Pulmonary Disease from Spirogram Time Series: A UK Biobank Study（Q1，已录用）。</li>
-                <li>共同作者，Zhehao Lin, Chen Dong, Yuxuan Wan，Research on Intelligent Recognition Algorithm of Container Numbers in Ports Based on Deep Learning（CCF-C，已录用）。</li>
-                <li>共同作者，Jiahao Chen, Chen Dong, Yuxuan Wan，Enhancing Container Damage Detection with Improved YOLOv5 Model: Integrating Swin Transformer（CCF-C，已录用）。</li>
-                <li>抑郁症虚拟病人项目，2025.11 - 至今，围绕抑郁症相关场景探索虚拟病人交互、AI 角色模拟与心理健康教育应用。</li>
-              </ul>
-              <ul data-lang="en">
-                <li>Co-author, Shuhao Mei, Xin Li, Yuxi Zhou, Jiahao Xu, Yong Zhang, Yuxuan Wan, Shan Cao, Qinghao Zhao, Shijia Geng, Junqing Xie, Shenda Hong, Deep Learning for Detecting and Early Predicting Chronic Obstructive Pulmonary Disease from Spirogram Time Series: A UK Biobank Study (Q1, accepted).</li>
-                <li>Co-author, Zhehao Lin, Chen Dong, Yuxuan Wan, Research on Intelligent Recognition Algorithm of Container Numbers in Ports Based on Deep Learning (CCF-C, accepted).</li>
-                <li>Co-author, Jiahao Chen, Chen Dong, Yuxuan Wan, Enhancing Container Damage Detection with Improved YOLOv5 Model: Integrating Swin Transformer (CCF-C, accepted).</li>
-                <li>Virtual Patient for Depression Project, Nov 2025 - Present, exploring virtual-patient interaction, AI role simulation, and mental-health education applications for depression-related scenarios.</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section class="section" id="projects" aria-labelledby="projects-title">
-          <div class="section-heading">
-            <h2 id="projects-title" data-lang="zh">项目经历</h2>
-            <h2 data-lang="en">Projects</h2>
-          </div>
           <div class="project-grid">
-            <article class="project-card">
-              <div class="project-meta" data-lang="zh">2025.11 - 至今 · 产品设计 + AI 交互设计</div>
-              <div class="project-meta" data-lang="en">Nov 2025 - Present · Product Design + AI Interaction Design</div>
-              <h3 data-lang="zh">抑郁症虚拟病人项目</h3>
-              <h3 data-lang="en">Virtual Patient for Depression Project</h3>
-              <p data-lang="zh">
-                项目进行中，围绕抑郁症相关场景构建虚拟病人交互体验，探索 AI 角色模拟、对话流程设计与心理健康教育场景中的产品化应用。
-              </p>
-              <p data-lang="en">
-                In progress. The project builds an interactive virtual patient experience for depression-related scenarios, exploring AI role simulation, dialogue-flow design, and product applications in mental-health education.
-              </p>
-              <div class="tag-row">
-                <span data-lang="zh">进行中</span>
-                <span data-lang="en">In Progress</span>
-                <span data-lang="zh">AI 交互</span>
-                <span data-lang="en">AI Interaction</span>
-                <span data-lang="zh">心理健康场景</span>
-                <span data-lang="en">Mental Health Scenario</span>
+            <article class="project-card project-card--lead reveal">
+              <div class="project-topline">
+                <span>2025.10 — 2026.12</span>
               </div>
-            </article>
-
-            <article class="project-card">
-              <div class="project-meta" data-lang="zh">2025.11 - 2025.12 · 游戏策划 + 游戏开发</div>
-              <div class="project-meta" data-lang="en">Nov 2025 - Dec 2025 · Game Design + Game Development</div>
-              <h3 data-lang="zh">Unity 3D 模拟新猫养成游戏（严肃游戏）</h3>
-              <h3 data-lang="en">Unity 3D New Cat Simulation Game (Serious Game)</h3>
-              <p data-lang="zh">
-                针对现代年轻人渴望养猫但受限于现实条件无法养育、养猫知识不足、猫咪弃养率高等痛点，
-                开发基于 Unity 3D 的沉浸式猫咪模拟养成游戏，通过拟真的互动体验和寓教于乐的关卡设计，
-                帮助玩家在体验养猫乐趣的同时学习科学养宠知识。
-              </p>
-              <p data-lang="en">
-                Built an immersive Unity 3D cat simulation game for young users who want to raise cats but face real-life constraints,
-                limited pet-care knowledge, and high abandonment risks. The project combines realistic interactions with educational level design
-                so players can enjoy cat care while learning responsible pet ownership.
-              </p>
+              <p class="project-role" data-lang="zh">游戏策划 + 游戏开发</p>
+              <p class="project-role" data-lang="en">Game Design + Game Development</p>
+              <h3 data-lang="zh">Unity 3D 模拟养猫严肃游戏</h3>
+              <h3 data-lang="en">Unity 3D Cat-care Serious Game</h3>
+              <p data-lang="zh">面向渴望养猫却受现实条件限制、养宠知识不足的年轻人，以沉浸式互动和寓教于乐的关卡设计传递科学养宠知识。</p>
+              <p data-lang="en">An immersive cat-care simulation for young people constrained by real-life conditions or limited knowledge, combining realistic interaction with educational level design.</p>
               <ul data-lang="zh">
-                <li>技术选型：Unity 3D (URP)、C#。</li>
-                <li>功能设计：设计多维数值养成系统、模块化关卡与任务系统，以及具体游戏关卡。</li>
-                <li>项目结果：完成从策划、场景搭建、代码编写到 UI 交互的全流程开发，覆盖喂食、清理猫砂、互动解压、驱虫治疗等核心养宠体验，逻辑闭环且运行稳定。</li>
+                <li>基于 Unity 3D（URP）与 C#，设计多维数值养成、模块化关卡和任务系统。</li>
+                <li>独立完成从策划、场景搭建、代码编写到 UI 交互的完整开发流程。</li>
+                <li>覆盖喂食、清理猫砂、互动解压与驱虫治疗等核心体验，逻辑闭环且运行稳定。</li>
               </ul>
               <ul data-lang="en">
-                <li>Tech stack: Unity 3D (URP), C#.</li>
-                <li>Feature design: Designed a multi-dimensional growth system, modular levels and task systems, and specific gameplay levels.</li>
-                <li>Outcome: Completed the full workflow from planning and scene building to coding and UI interactions, covering feeding, litter cleaning, stress-relief interaction, deworming treatment, and other core pet-care experiences with a stable gameplay loop.</li>
+                <li>Built with Unity 3D (URP) and C#, including multi-dimensional growth, modular levels, and task systems.</li>
+                <li>Completed the full workflow from planning and scene building to coding and UI interaction.</li>
+                <li>Delivered feeding, litter cleaning, stress-relief interaction, and treatment flows in a stable gameplay loop.</li>
               </ul>
               <a class="repo-link" href="https://github.com/happyyyfox/serious-game-final" target="_blank" rel="noreferrer">
-                <span data-lang="zh">代码仓库直达：</span>
-                <span data-lang="en">Code repository:</span>
-                <svg class="github-icon" aria-hidden="true" viewBox="0 0 24 24">
-                  <path d="M15 22v-3.9a3.4 3.4 0 0 0-.96-2.63c3.18-.35 6.52-1.56 6.52-7.05a5.5 5.5 0 0 0-1.47-3.84 5.1 5.1 0 0 0-.14-3.78s-1.2-.38-3.92 1.47a13.6 13.6 0 0 0-7.14 0C5.17.42 3.97.8 3.97.8a5.1 5.1 0 0 0-.14 3.78 5.5 5.5 0 0 0-1.47 3.84c0 5.47 3.33 6.7 6.5 7.06A3.4 3.4 0 0 0 8 18.1V22" />
-                  <path d="M8 19c-3 .9-5.5 0-7-2" />
-                </svg>
+                <span data-lang="zh">查看 GitHub 仓库</span>
+                <span data-lang="en">View GitHub repository</span>
+                <i aria-hidden="true">↗</i>
               </a>
-              <div class="tag-row">
-                <span>Unity 3D</span>
-                <span>URP</span>
-                <span>C#</span>
-              </div>
+              <div class="tag-row"><span>Unity 3D</span><span>URP</span><span>C#</span></div>
             </article>
 
-            <article class="project-card">
-              <div class="project-meta" data-lang="zh">2025.10 - 2025.11 · 产品经理 + 前后端开发</div>
-              <div class="project-meta" data-lang="en">Oct 2025 - Nov 2025 · Product Manager + Full-stack Developer</div>
+            <article class="project-card reveal">
+              <div class="project-topline"><span>2025.10 — 2025.11</span></div>
+              <p class="project-role" data-lang="zh">产品经理 + 前后端开发</p>
+              <p class="project-role" data-lang="en">Product Manager + Full-stack Developer</p>
               <h3 data-lang="zh">人工智能实时翻译 App</h3>
               <h3 data-lang="en">AI Real-time Translation App</h3>
-              <p data-lang="zh">
-                面向线下会议场景的实时同声传译 MVP，使用 Gradio 搭建前后端一体化应用，
-                集成 Whisper AI 实时语音转文字，并调用千问 2.5 大模型完成翻译。
-              </p>
-              <p data-lang="en">
-                A real-time interpretation MVP for offline meetings. The app uses Gradio for an integrated frontend/backend experience, Whisper for live speech-to-text, and Qwen 2.5 for translation.
-              </p>
-              <div class="tag-row">
-                <span>Gradio</span>
-                <span>Whisper</span>
-                <span data-lang="zh">大模型翻译</span>
-                <span data-lang="en">LLM Translation</span>
-                <span data-lang="zh">Prompt 优化</span>
-                <span data-lang="en">Prompt Optimization</span>
-              </div>
+              <p data-lang="zh">面向线下会议场景的实时同声传译 MVP。使用 Gradio 搭建前后端一体化应用，集成 Whisper 实时语音转文字，并调用千问 2.5 完成翻译。</p>
+              <p data-lang="en">A real-time interpretation MVP for offline meetings, combining Gradio, Whisper speech-to-text, and Qwen 2.5 translation.</p>
+              <a class="repo-link" href="https://github.com/happyyyfox/translation-tool" target="_blank" rel="noreferrer">
+                <span data-lang="zh">查看 GitHub 仓库</span>
+                <span data-lang="en">View GitHub repository</span>
+                <i aria-hidden="true">↗</i>
+              </a>
+              <div class="tag-row"><span>Gradio</span><span>Whisper</span><span>Qwen 2.5</span><span>Prompt</span></div>
             </article>
 
-            <article class="project-card">
-              <div class="project-meta" data-lang="zh">2023.01 - 2024.09 · 产品经理</div>
-              <div class="project-meta" data-lang="en">Jan 2023 - Sep 2024 · Product Manager</div>
+            <article class="project-card reveal">
+              <div class="project-topline"><span>2023.01 — 2024.09</span></div>
+              <p class="project-role" data-lang="zh">产品经理</p>
+              <p class="project-role" data-lang="en">Product Manager</p>
               <h3 data-lang="zh">智慧绿色港口云服务平台</h3>
-              <h3 data-lang="en">Ports and Transportation SmartLink - Intelligent Green Port Cloud Service Platform</h3>
-              <p data-lang="zh">
-                项目面向港口与交通智慧化场景，建设以云服务平台为核心的智能绿色港口解决方案。
-              </p>
-              <p data-lang="en">
-                The project built an intelligent green port solution centered on a cloud service platform for port and transportation scenarios.
-              </p>
+              <h3 data-lang="en">Intelligent Green Port Cloud Platform</h3>
+              <p data-lang="zh">面向港口与交通智慧化场景，建设以云服务平台为核心的智能绿色港口解决方案。</p>
+              <p data-lang="en">An intelligent green-port solution centered on a cloud platform for port and transportation scenarios.</p>
               <ul data-lang="zh">
-                <li>负责产品设计、架构规划与设计，并分析需求和实际可行性。</li>
+                <li>负责产品设计、架构规划、需求分析与可行性评估。</li>
                 <li>构建数据库，完成后端开发与测试。</li>
-                <li>基于 Cloud Server + App + Web + IoT 架构设计并实现云服务平台。</li>
+                <li>基于 Cloud Server + App + Web + IoT 架构设计并实现平台。</li>
               </ul>
               <ul data-lang="en">
-                <li>Responsible for product design, architecture planning and design, and analysis of requirements and practical feasibility.</li>
-                <li>Constructed the database and conducted backend development and testing.</li>
-                <li>Designed and implemented the cloud service platform using a Cloud Server + App + Web + IoT architecture.</li>
+                <li>Led product design, architecture planning, requirements, and feasibility analysis.</li>
+                <li>Built the database and completed backend development and testing.</li>
+                <li>Designed and implemented a Cloud Server + App + Web + IoT architecture.</li>
               </ul>
-              <div class="tag-row">
-                <span>Cloud Server</span>
-                <span>App</span>
-                <span>Web</span>
-                <span>IoT</span>
+              <div class="tag-row"><span>Cloud</span><span>App</span><span>Web</span><span>IoT</span></div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-topline"><span>2022.05 — 2022.08</span></div>
+              <p class="project-role" data-lang="zh">产品经理</p>
+              <p class="project-role" data-lang="en">Product Manager</p>
+              <h3 data-lang="zh">校级社团报名面试系统</h3>
+              <h3 data-lang="en">Campus Club Application & Interview System</h3>
+              <p data-lang="zh">为校内学生组织与新生设计统一的社团展示、报名和面试管理系统，覆盖 B 端组织配置与 C 端学生报名。</p>
+              <p data-lang="en">A unified club discovery, application, and interview system spanning organization-side configuration and student-side registration.</p>
+              <div class="metric-row">
+                <div><strong>1400+</strong><span data-lang="zh">学生使用</span><span data-lang="en">student users</span></div>
+                <div><strong>53</strong><span data-lang="zh">社团接入</span><span data-lang="en">clubs onboarded</span></div>
               </div>
             </article>
 
-            <article class="project-card">
-              <div class="project-meta" data-lang="zh">2022.05 - 2022.08 · 产品经理</div>
-              <div class="project-meta" data-lang="en">May 2022 - Aug 2022 · Product Manager</div>
-              <h3 data-lang="zh">校级社团报名面试系统</h3>
-              <h3 data-lang="en">Campus Club Application and Interview System</h3>
-              <p data-lang="zh">
-                为校内学生组织和新生设计统一的社团展示、报名与面试管理系统，覆盖 B 端组织配置与
-                C 端学生报名两类场景。
-              </p>
-              <p data-lang="en">
-                Designed a unified club discovery, application, and interview management system for campus organizations and incoming students, covering both organization-side and student-side workflows.
-              </p>
-              <div class="metric-row" aria-label="Project results">
-                <strong>1400+</strong>
-                <span data-lang="zh">学生使用</span>
-                <span data-lang="en">student users</span>
-                <strong>53</strong>
-                <span data-lang="zh">社团接入</span>
-                <span data-lang="en">clubs onboarded</span>
+          </div>
+        </section>
+
+        <section class="story-section reveal" id="skills" aria-labelledby="skills-title-zh">
+          <header class="section-heading">
+            <div>
+              <h2 id="skills-title-zh" data-lang="zh">专业能力</h2>
+              <h2 data-lang="en">Capabilities</h2>
+            </div>
+          </header>
+
+          <div class="capability-grid">
+            <article class="capability-card reveal">
+              <h3 data-lang="zh">产品设计</h3><h3 data-lang="en">Product Design</h3>
+              <p data-lang="zh">从用户旅程、需求拆解到原型、PRD 与信息架构。</p>
+              <p data-lang="en">From user journeys and requirements to prototypes, PRDs, and information architecture.</p>
+              <div class="skill-list"><span>Axure</span><span>墨刀</span><span>Visio</span><span>XMind</span><span>Tableau</span><span>Excel</span><span>PPT</span><span>R</span></div>
+            </article>
+            <article class="capability-card reveal">
+              <h3 data-lang="zh">AI 与数据</h3><h3 data-lang="en">AI & Data</h3>
+              <p data-lang="zh">把大模型能力转化为可控、可验证的产品流程。</p>
+              <p data-lang="en">Turning model capabilities into controlled and testable product workflows.</p>
+              <div class="skill-list"><span>Python</span><span>R</span><span>RAG</span><span>Prompt Engineering</span><span>Knot</span></div>
+            </article>
+            <article class="capability-card reveal">
+              <h3 data-lang="zh">工程实现</h3><h3 data-lang="en">Engineering</h3>
+              <p data-lang="zh">理解交互原型到工程实现、数据存储与部署交付的完整链路。</p>
+              <p data-lang="en">Understanding the end-to-end path from interactive prototypes to engineering, data, and delivery.</p>
+              <div class="skill-list"><span>Java</span><span>Kotlin</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Spring Boot</span><span>MySQL</span><span>Linux</span><span>Git</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="story-section reveal" id="research" aria-labelledby="research-title-zh">
+          <header class="section-heading section-heading--research">
+            <div>
+              <h2 id="research-title-zh" data-lang="zh">科研探索</h2>
+              <h2 data-lang="en">Research</h2>
+            </div>
+            <a
+              class="scholar-link"
+              href="https://scholar.google.com/citations?hl=zh-CN&amp;user=sSD1c58AAAAJ&amp;view_op=list_works&amp;gmla=AO4B3jsNLFLcu3HR4NG5_Rpw696FsNREQK4gQz4aGhlZPgMDq7iX1UI7kwrJss4yWIZXx240x_0S8FKdsmCMGt1qfXkx2mDUdHI_d0ugl3E"
+              target="_blank"
+              rel="noreferrer"
+              title="打开 Google Scholar"
+            >
+              <span data-lang="zh">Google Scholar 论文主页</span>
+              <span data-lang="en">Google Scholar profile</span>
+              <i aria-hidden="true">↗</i>
+            </a>
+          </header>
+
+          <div class="research-list">
+            <article class="research-focus reveal">
+              <p class="research-note" data-lang="zh">项目探索 · 2025.10 至今</p>
+              <p class="research-note" data-lang="en">Project exploration · Oct 2025 to present</p>
+              <h3 data-lang="zh">机器人虚拟病人</h3>
+              <h3 data-lang="en">Robot Virtual Patient</h3>
+              <p data-lang="zh">围绕心理咨询训练，运用大语言模型、情绪状态机、FACS 脸孔编码与社交机器人设计虚拟病人。</p>
+              <p data-lang="en">Designing a virtual patient for psychotherapy training with large language models, emotional state machines, FACS, and social robots.</p>
+            </article>
+            <article class="research-item reveal">
+              <div>
+                <p class="research-note" data-lang="zh">Q1 · 已录用</p>
+                <p class="research-note" data-lang="en">Q1 · Accepted</p>
+                <h3>Deep Learning for Detecting and Early Predicting Chronic Obstructive Pulmonary Disease from Spirogram Time Series: A UK Biobank Study</h3>
+                <p data-lang="zh">Shuhao Mei, Xin Li, Yuxi Zhou, Jiahao Xu, Yong Zhang, <strong>Yuxuan Wan</strong>, Shan Cao, Qinghao Zhao, Shijia Geng, Junqing Xie, Shenda Hong</p>
+                <p data-lang="en">Shuhao Mei, Xin Li, Yuxi Zhou, Jiahao Xu, Yong Zhang, <strong>Yuxuan Wan</strong>, Shan Cao, Qinghao Zhao, Shijia Geng, Junqing Xie, Shenda Hong</p>
+              </div>
+            </article>
+            <article class="research-item reveal">
+              <div>
+                <p class="research-note" data-lang="zh">CCF-C · 已录用</p>
+                <p class="research-note" data-lang="en">CCF-C · Accepted</p>
+                <h3>Research on Intelligent Recognition Algorithm of Container Numbers in Ports Based on Deep Learning</h3>
+                <p data-lang="zh">Zhehao Lin, Chen Dong, <strong>Yuxuan Wan</strong></p>
+                <p data-lang="en">Zhehao Lin, Chen Dong, <strong>Yuxuan Wan</strong></p>
+              </div>
+            </article>
+            <article class="research-item reveal">
+              <div>
+                <p class="research-note" data-lang="zh">CCF-C · 已录用</p>
+                <p class="research-note" data-lang="en">CCF-C · Accepted</p>
+                <h3>Enhancing Container Damage Detection with Improved YOLOv5 Model: Integrating Swin Transformer</h3>
+                <p data-lang="zh">Jiahao Chen, Chen Dong, <strong>Yuxuan Wan</strong></p>
+                <p data-lang="en">Jiahao Chen, Chen Dong, <strong>Yuxuan Wan</strong></p>
               </div>
             </article>
           </div>
         </section>
 
+        <section class="story-section reveal" id="awards" aria-labelledby="awards-title-zh">
+          <header class="section-heading">
+            <div>
+              <h2 id="awards-title-zh" data-lang="zh">荣誉与获奖</h2>
+              <h2 data-lang="en">Recognition</h2>
+            </div>
+          </header>
+
+          <div class="award-grid">
+            <article class="award-card reveal">
+              <span class="award-year">2023</span><span class="award-level" data-lang="zh">国家级一等奖 · 队长</span><span class="award-level" data-lang="en">National First Prize · Team Leader</span>
+              <h3 data-lang="zh">华北五省及港澳台计算机应用大赛</h3><h3 data-lang="en">Computer Application Competition of North China, Hong Kong, Macao and Taiwan</h3>
+            </article>
+            <article class="award-card reveal">
+              <span class="award-year">2023</span><span class="award-level" data-lang="zh">国家级三等奖</span><span class="award-level" data-lang="en">National Third Prize</span>
+              <h3 data-lang="zh">全国大学生数字媒体科技作品及创意竞赛</h3><h3 data-lang="en">National College Digital Media Technology Works and Creativity Competition</h3>
+            </article>
+            <article class="award-card reveal">
+              <span class="award-year">2023</span><span class="award-level" data-lang="zh">省赛银奖 · 队长</span><span class="award-level" data-lang="en">Provincial Silver Award · Team Leader</span>
+              <h3 data-lang="zh">中国国际“互联网+”大学生创新创业大赛</h3><h3 data-lang="en">China International College Students' “Internet+” Competition</h3>
+            </article>
+            <article class="award-card reveal">
+              <span class="award-year">2024</span><span class="award-level" data-lang="zh">华北赛区省级三等奖</span><span class="award-level" data-lang="en">Provincial Third Prize</span>
+              <h3 data-lang="zh">网络技术挑战赛</h3><h3 data-lang="en">Network Technology Challenge, North China Division</h3>
+            </article>
+            <article class="award-card reveal">
+              <span class="award-year">2024</span><span class="award-level" data-lang="zh">校级荣誉</span><span class="award-level" data-lang="en">University Honors</span>
+              <h3 data-lang="zh">人民奖学金 / 优秀学生干部</h3><h3 data-lang="en">People's Scholarship / Outstanding Student Cadre</h3>
+            </article>
+            <article class="award-card reveal">
+              <span class="award-year">2025</span><span class="award-level" data-lang="zh">毕业荣誉</span><span class="award-level" data-lang="en">Graduation Honor</span>
+              <h3 data-lang="zh">优秀毕业论文</h3><h3 data-lang="en">Outstanding Graduation Thesis</h3>
+            </article>
+          </div>
+        </section>
+        </div>
       </div>
     </main>
 
     <footer class="site-footer">
-      <span data-lang="zh">© 2026 万羽旋</span>
-      <span data-lang="en">© 2026 Yuxuan Wan</span>
-      <span>Personal Portfolio</span>
+      <div class="footer-name">
+        <span data-lang="zh">万羽旋</span>
+        <span data-lang="en">Yuxuan Wan</span>
+      </div>
+      <div class="footer-meta">
+        <a href="#profile"><span data-lang="zh">回到顶部</span><span data-lang="en">Back to top</span><i aria-hidden="true">↑</i></a>
+        <span>© <span data-current-year>2026</span> Yuxuan Wan</span>
+      </div>
     </footer>
   </body>
 </html>

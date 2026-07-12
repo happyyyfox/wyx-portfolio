@@ -1,132 +1,194 @@
+document.documentElement.classList.add("js");
+
 const body = document.body;
-const languageButtons = document.querySelectorAll("[data-set-lang]");
-const sideNav = document.querySelector(".side-nav");
-const navLinks = [...document.querySelectorAll(".side-nav a")];
+const siteHeader = document.querySelector(".site-header");
+const languageButtons = [...document.querySelectorAll("[data-set-lang]")];
+const navigationLinks = [...document.querySelectorAll("[data-nav-link]")];
+const backgroundVideo = document.querySelector("#background-video");
+const videoToggle = document.querySelector("[data-video-toggle]");
+const videoToggleLabel = videoToggle?.querySelector(".video-toggle-label");
 
 const languageMeta = {
   zh: {
     htmlLang: "zh-CN",
-    title: "万羽旋 | AI 产品经理候选人",
-    copy: "复制",
-    copied: "已复制",
+    title: "welcome!",
+    videoPause: "暂停动态",
+    videoPlay: "播放动态",
+    videoPauseAria: "暂停动态背景",
+    videoPlayAria: "播放动态背景",
   },
   en: {
     htmlLang: "en",
-    title: "Yuxuan Wan | AI Product Manager Candidate",
-    copy: "Copy",
-    copied: "Copied",
+    title: "welcome!",
+    videoPause: "Pause motion",
+    videoPlay: "Play motion",
+    videoPauseAria: "Pause animated background",
+    videoPlayAria: "Play animated background",
   },
 };
 
+let currentLanguage = "zh";
+
+function getSavedLanguage() {
+  try {
+    return localStorage.getItem("portfolio-language");
+  } catch {
+    return null;
+  }
+}
+
+function saveLanguage(language) {
+  try {
+    localStorage.setItem("portfolio-language", language);
+  } catch {
+    // The language switch still works when storage is unavailable.
+  }
+}
+
+function updateVideoControl() {
+  if (!backgroundVideo || !videoToggle || !videoToggleLabel) return;
+
+  const isPaused = backgroundVideo.paused;
+  const labels = languageMeta[currentLanguage];
+
+  videoToggle.dataset.state = isPaused ? "paused" : "playing";
+  videoToggleLabel.textContent = isPaused ? labels.videoPlay : labels.videoPause;
+  videoToggle.setAttribute("aria-label", isPaused ? labels.videoPlayAria : labels.videoPauseAria);
+  videoToggle.setAttribute("aria-pressed", String(isPaused));
+}
+
 function setLanguage(language) {
   const nextLanguage = languageMeta[language] ? language : "zh";
+  currentLanguage = nextLanguage;
+
   body.classList.toggle("lang-zh", nextLanguage === "zh");
   body.classList.toggle("lang-en", nextLanguage === "en");
   document.documentElement.lang = languageMeta[nextLanguage].htmlLang;
   document.title = languageMeta[nextLanguage].title;
-  localStorage.setItem("portfolio-language", nextLanguage);
 
   languageButtons.forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.setLang === nextLanguage);
+    const isActive = button.dataset.setLang === nextLanguage;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
   });
 
-  document.querySelectorAll("[data-copy]").forEach((button) => {
-    button.dataset.feedback = languageMeta[nextLanguage].copy;
-  });
+  saveLanguage(nextLanguage);
+  updateVideoControl();
 }
 
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.setLang));
 });
 
-setLanguage(localStorage.getItem("portfolio-language") || "zh");
+setLanguage(getSavedLanguage() || "zh");
 
-const copyButtons = document.querySelectorAll("[data-copy]");
+if (backgroundVideo && videoToggle) {
+  const markVideoReady = () => body.classList.add("video-ready");
 
-async function copyText(value) {
-  if (navigator.clipboard?.writeText) {
-    await navigator.clipboard.writeText(value);
-    return;
-  }
+  if (backgroundVideo.readyState >= 2) markVideoReady();
 
-  const input = document.createElement("textarea");
-  input.value = value;
-  input.setAttribute("readonly", "");
-  input.style.position = "fixed";
-  input.style.opacity = "0";
-  document.body.append(input);
-  input.select();
-  document.execCommand("copy");
-  input.remove();
+  backgroundVideo.addEventListener("loadeddata", markVideoReady, { once: true });
+  backgroundVideo.addEventListener("play", updateVideoControl);
+  backgroundVideo.addEventListener("pause", updateVideoControl);
+
+  videoToggle.addEventListener("click", async () => {
+    if (backgroundVideo.paused) {
+      try {
+        await backgroundVideo.play();
+      } catch {
+        updateVideoControl();
+      }
+    } else {
+      backgroundVideo.pause();
+    }
+  });
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (reducedMotion.matches) backgroundVideo.pause();
+
+  reducedMotion.addEventListener?.("change", (event) => {
+    if (event.matches) backgroundVideo.pause();
+  });
+
+  updateVideoControl();
 }
 
-copyButtons.forEach((button) => {
-  const currentLanguage = body.classList.contains("lang-en") ? "en" : "zh";
-  button.dataset.feedback = languageMeta[currentLanguage].copy;
+const revealTargets = [...document.querySelectorAll(".reveal")];
 
-  button.addEventListener("click", async () => {
-    await copyText(button.dataset.copy);
-    const activeLanguage = body.classList.contains("lang-en") ? "en" : "zh";
-    button.dataset.feedback = languageMeta[activeLanguage].copied;
-    button.classList.add("is-copied");
-    window.setTimeout(() => {
-      button.classList.remove("is-copied");
-      button.dataset.feedback = languageMeta[activeLanguage].copy;
-    }, 1200);
+document.querySelectorAll(".experience-list, .project-grid, .capability-grid, .research-list, .award-grid").forEach((group) => {
+  [...group.children].forEach((item, index) => {
+    item.style.transitionDelay = `${Math.min(index * 55, 220)}ms`;
   });
 });
 
-const revealTargets = document.querySelectorAll(
-  ".section, .timeline-item, .experience-item, .project-card, .panel",
-);
-
-revealTargets.forEach((target, index) => {
-  target.classList.add("reveal");
-  target.style.transitionDelay = `${Math.min(index * 35, 180)}ms`;
-});
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
         entry.target.classList.add("is-visible");
         revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 },
-);
+      });
+    },
+    { threshold: 0.08, rootMargin: "0px 0px -7% 0px" },
+  );
 
-revealTargets.forEach((target) => revealObserver.observe(target));
-
-const sections = navLinks
-  .map((link) => document.querySelector(link.getAttribute("href")))
-  .filter(Boolean);
-
-const navObserver = new IntersectionObserver(
-  (entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-    if (!visible) return;
-
-    navLinks.forEach((link) => {
-      link.classList.toggle("is-active", link.getAttribute("href") === `#${visible.target.id}`);
-    });
-  },
-  {
-    rootMargin: "-36% 0px -48% 0px",
-    threshold: [0.08, 0.18, 0.32],
-  },
-);
-
-sections.forEach((section) => navObserver.observe(section));
-
-function updateChrome() {
-  const pastHero = window.scrollY > window.innerHeight * 0.7;
-  sideNav.classList.toggle("is-dark", pastHero);
+  revealTargets.forEach((target) => revealObserver.observe(target));
+} else {
+  revealTargets.forEach((target) => target.classList.add("is-visible"));
 }
 
-updateChrome();
-window.addEventListener("scroll", updateChrome, { passive: true });
+const sectionMap = new Map();
+navigationLinks.forEach((link) => {
+  const sectionId = link.getAttribute("href");
+  if (!sectionMap.has(sectionId)) {
+    const section = document.querySelector(sectionId);
+    if (section) sectionMap.set(sectionId, section);
+  }
+});
+
+function activateSection(sectionId) {
+  navigationLinks.forEach((link) => {
+    link.classList.toggle("is-active", link.getAttribute("href") === sectionId);
+  });
+}
+
+if ("IntersectionObserver" in window) {
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const visibleEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visibleEntry) activateSection(`#${visibleEntry.target.id}`);
+    },
+    {
+      rootMargin: "-28% 0px -56% 0px",
+      threshold: [0.02, 0.12, 0.28],
+    },
+  );
+
+  sectionMap.forEach((section) => sectionObserver.observe(section));
+}
+
+function updateHeader() {
+  siteHeader?.classList.remove("is-scrolled");
+}
+
+updateHeader();
+
+const shoreStage = document.querySelector(".shore-stage");
+
+function updateNavigationTone() {
+  if (!shoreStage) return;
+
+  const stageTop = shoreStage.getBoundingClientRect().top;
+  body.classList.toggle("nav-on-light", stageTop < window.innerHeight * 0.52);
+}
+
+updateNavigationTone();
+window.addEventListener("scroll", updateNavigationTone, { passive: true });
+window.addEventListener("resize", updateNavigationTone);
+
+const currentYear = document.querySelector("[data-current-year]");
+if (currentYear) currentYear.textContent = String(new Date().getFullYear());
