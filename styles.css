@@ -3280,3 +3280,180 @@ body.nav-on-light .chapter-nav a:hover .chapter-node {
   display: flex;
   justify-content: flex-end;
 }
+
+/* Collapsible project details keep the project cards compact until requested. */
+.shore-stage .project-card--collapsible summary {
+  display: block;
+  cursor: pointer;
+  list-style: none;
+}
+
+.shore-stage .project-card--collapsible summary::-webkit-details-marker {
+  display: none;
+}
+
+.shore-stage .project-card--collapsible summary:focus-visible {
+  outline: 2px solid rgba(62, 111, 154, 0.42);
+  outline-offset: 5px;
+}
+
+.shore-stage .project-card--collapsible .project-expand-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 2px;
+  color: var(--shore-sea);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.shore-stage .project-card--collapsible [data-collapse-label] {
+  display: none !important;
+}
+
+.shore-stage .project-card--collapsible .project-expand-hint i {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 180ms ease;
+}
+
+.shore-stage .project-card--collapsible details[open] [data-expand-label] {
+  display: none !important;
+}
+
+body.lang-zh .shore-stage .project-card--collapsible details[open] [data-collapse-label][data-lang="zh"],
+body.lang-en .shore-stage .project-card--collapsible details[open] [data-collapse-label][data-lang="en"] {
+  display: inline !important;
+}
+
+.shore-stage .project-card--collapsible details[open] .project-expand-hint i {
+  transform: rotate(225deg) translateY(-1px);
+}
+
+.shore-stage .project-card--collapsible .project-details {
+  padding-top: 18px;
+}
+
+.shore-stage .project-card--collapsible .project-details > p {
+  margin-bottom: 16px;
+  color: var(--shore-muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.shore-stage .project-card--collapsible .project-details > ul {
+  margin-bottom: 12px;
+}
+
+.shore-stage .project-card--collapsible .project-details .tag-row,
+.shore-stage .project-card--collapsible .project-details .metric-row {
+  margin-top: 22px;
+}
+
+/* Recognition follows the same restrained, divided-list treatment as research. */
+.shore-stage .award-list {
+  display: grid;
+  gap: 0;
+  border-top: 0;
+}
+
+.shore-stage .award-card {
+  min-height: 0;
+  border: 0;
+  border-top: 1px solid var(--shore-line);
+  border-radius: 0;
+  padding: 28px 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.shore-stage .award-card:hover {
+  border-color: var(--shore-line);
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.shore-stage .award-note {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin: 0 0 9px;
+  color: var(--shore-coral);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.shore-stage .award-year,
+.shore-stage .award-level {
+  color: inherit;
+  font: inherit;
+}
+
+.shore-stage .award-card h3 {
+  max-width: 940px;
+  margin: 0;
+  color: var(--shore-ink);
+  font-size: clamp(21px, 2.5vw, 30px);
+  line-height: 1.45;
+}
+
+/* Keep the project sequence vertical and use the shared sea blue for metadata. */
+.shore-stage .project-grid {
+  grid-template-columns: 1fr;
+}
+
+.shore-stage .award-note {
+  color: var(--shore-sea);
+}
+
+/* Keep the Scholar shortcut directly beside the research heading. */
+.shore-stage .section-heading--research {
+  display: block;
+}
+
+.shore-stage .research-heading-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.shore-stage .research-heading-row h2 {
+  flex: 0 0 auto;
+}
+
+/* Project and capability cards no longer use an outlined container. */
+.shore-stage .project-card,
+.shore-stage .capability-card,
+.shore-stage .project-card:hover,
+.shore-stage .capability-card:hover {
+  border-color: transparent;
+}
+
+.shore-stage .project-card,
+.shore-stage .capability-card {
+  box-shadow: 0 8px 20px rgba(62, 111, 154, 0.1);
+  transition: box-shadow 180ms ease;
+}
+
+.shore-stage .project-card:hover,
+.shore-stage .capability-card:hover {
+  box-shadow: 0 14px 30px rgba(62, 111, 154, 0.22);
+}
+
+@media (max-width: 700px) {
+  .shore-stage .research-heading-row {
+    gap: 10px;
+  }
+
+  .shore-stage .research-heading-row .scholar-link {
+    gap: 6px;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+}
