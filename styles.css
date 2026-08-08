@@ -3281,6 +3281,30 @@ body.nav-on-light .chapter-nav a:hover .chapter-node {
   justify-content: flex-end;
 }
 
+.project-title-suffix {
+  white-space: nowrap;
+}
+
+.shore-stage .project-card h3,
+.shore-stage .project-card h3.project-title--compact {
+  font-size: 30px;
+}
+
+.shore-stage .project-card h3.project-title--compact {
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .shore-stage .project-card h3,
+  .shore-stage .project-card h3.project-title--compact {
+    font-size: 26px;
+  }
+
+  .shore-stage .project-card h3.project-title--compact {
+    white-space: normal;
+  }
+}
+
 /* Collapsible project details keep the project cards compact until requested. */
 .shore-stage .project-card--collapsible summary {
   display: block;
@@ -3446,6 +3470,69 @@ body.lang-en .shore-stage .project-card--collapsible details[open] [data-collaps
   box-shadow: 0 14px 30px rgba(62, 111, 154, 0.22);
 }
 
+/* Project screenshots sit beside the content and preserve wide interface views. */
+.shore-stage .project-card--with-preview {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.7fr) minmax(0, 1.3fr);
+  align-items: stretch;
+  gap: clamp(20px, 3vw, 34px);
+}
+
+.shore-stage .project-card--with-preview.project-card:last-child {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.7fr) minmax(0, 1.3fr);
+}
+
+.shore-stage .project-card--with-preview > * {
+  min-width: 0;
+}
+
+.shore-stage .project-preview {
+  position: relative;
+  min-height: 0;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 6px;
+  background: rgba(62, 111, 154, 0.055);
+  scrollbar-width: none;
+}
+
+.shore-stage .project-preview::-webkit-scrollbar {
+  display: none;
+}
+
+.shore-stage .project-preview:focus-visible {
+  outline: 2px solid rgba(62, 111, 154, 0.48);
+  outline-offset: 4px;
+}
+
+.shore-stage .project-preview img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  max-width: none;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.shore-stage .project-preview--center img {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.shore-stage .project-content > p:not(.project-role) {
+  color: var(--shore-muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.shore-stage .project-content > ul {
+  margin-bottom: 12px;
+}
+
 @media (max-width: 700px) {
   .shore-stage .research-heading-row {
     gap: 10px;
@@ -3455,5 +3542,216 @@ body.lang-en .shore-stage .project-card--collapsible details[open] [data-collaps
     gap: 6px;
     padding: 8px 10px;
     font-size: 11px;
+  }
+
+  .shore-stage .project-card--with-preview {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .shore-stage .project-card--with-preview.project-card:last-child {
+    grid-template-columns: 1fr;
+  }
+
+  .shore-stage .project-preview {
+    height: min(58vw, 230px);
+  }
+}
+
+/* Navigation shells: closed at rest, open with a glowing pearl for the active section. */
+.chapter-nav {
+  gap: 13px;
+}
+
+.chapter-nav a {
+  grid-template-columns: 38px max-content;
+  gap: 10px;
+}
+
+.chapter-nav a:nth-child(1) {
+  --shell-closed: url("assets/navigation/shell-fish-sky-closed.png");
+  --shell-open: url("assets/navigation/shell-fish-sky-open.png");
+}
+
+.chapter-nav a:nth-child(2) {
+  --shell-closed: url("assets/navigation/shell-fish-coral-closed.png");
+  --shell-open: url("assets/navigation/shell-fish-coral-open.png");
+}
+
+.chapter-nav a:nth-child(3) {
+  --shell-closed: url("assets/navigation/shell-fish-blue-closed.png");
+  --shell-open: url("assets/navigation/shell-fish-blue-open.png");
+}
+
+.chapter-nav a:nth-child(4) {
+  --shell-closed: url("assets/navigation/shell-fish-gold-closed.png");
+  --shell-open: url("assets/navigation/shell-fish-gold-open.png");
+}
+
+.chapter-nav a:nth-child(5) {
+  --shell-closed: url("assets/navigation/shell-fish-purple-closed.png");
+  --shell-open: url("assets/navigation/shell-fish-purple-open.png");
+}
+
+.chapter-nav a:nth-child(6) {
+  --shell-closed: url("assets/navigation/shell-fish-teal-closed.png");
+  --shell-open: url("assets/navigation/shell-fish-teal-open.png");
+}
+
+.chapter-node,
+.chapter-nav a:nth-child(odd) .chapter-node,
+.chapter-nav a:nth-child(even) .chapter-node {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  filter: drop-shadow(0 0 2px rgba(91, 157, 207, 0.34));
+  opacity: 0.78;
+  transform: none;
+  transition:
+    opacity 220ms ease,
+    transform 240ms ease,
+    filter 240ms ease;
+}
+
+.chapter-node::before,
+.chapter-nav a:nth-child(odd) .chapter-node::before,
+.chapter-nav a:nth-child(even) .chapter-node::before,
+.chapter-node::after,
+.chapter-nav a:nth-child(odd) .chapter-node::after,
+.chapter-nav a:nth-child(even) .chapter-node::after {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  content: "";
+  transform: none;
+  transition: opacity 240ms ease;
+}
+
+.chapter-node::before,
+.chapter-nav a:nth-child(odd) .chapter-node::before,
+.chapter-nav a:nth-child(even) .chapter-node::before {
+  background: var(--shell-closed) center / contain no-repeat;
+  opacity: 1;
+}
+
+.chapter-node::after,
+.chapter-nav a:nth-child(odd) .chapter-node::after,
+.chapter-nav a:nth-child(even) .chapter-node::after {
+  background:
+    radial-gradient(circle at 54% 58%, rgba(255, 255, 255, 0.2) 0 10%, rgba(255, 255, 255, 0.08) 18%, transparent 30%),
+    var(--shell-open) center / contain no-repeat;
+  opacity: 0;
+}
+
+.chapter-nav a:hover .chapter-node,
+body.nav-on-light .chapter-nav a:hover .chapter-node {
+  box-shadow: none;
+  filter:
+    brightness(1.03)
+    drop-shadow(0 0 3px rgba(91, 164, 218, 0.5));
+  opacity: 0.95;
+  transform: translateX(2px) scale(1.03);
+}
+
+.chapter-nav a.is-active .chapter-node,
+body.nav-on-light .chapter-nav a.is-active .chapter-node,
+.chapter-nav a.is-active:hover .chapter-node,
+body.nav-on-light .chapter-nav a.is-active:hover .chapter-node {
+  box-shadow: none;
+  filter:
+    drop-shadow(0 0 3px rgba(91, 166, 222, 0.82))
+    drop-shadow(0 0 7px rgba(91, 166, 222, 0.46));
+  opacity: 1;
+  transform: translateX(5px) scale(1.08);
+}
+
+.chapter-nav a.is-active .chapter-node::before {
+  opacity: 0;
+}
+
+.chapter-nav a.is-active .chapter-node::after {
+  filter: none;
+  opacity: 1;
+}
+
+.shore-stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.shore-stage .page-shell {
+  position: relative;
+  z-index: 1;
+}
+
+/* The cursor changes when the pointer crosses from water to shore. */
+.theme-cursor {
+  position: fixed;
+  z-index: 120;
+  top: 0;
+  left: 0;
+  width: 62px;
+  height: 62px;
+  background: url("assets/cursor/snoopy-diving-blue-shorts.png") center / contain no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 140ms ease;
+  will-change: transform;
+}
+
+.theme-cursor.is-shore {
+  background-image: url("assets/cursor/snoopy-beach-blue-shorts.png");
+}
+
+.theme-cursor.is-visible {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.has-theme-cursor,
+  html.has-theme-cursor * {
+    cursor: none !important;
+  }
+}
+
+@media (max-width: 700px), (hover: none), (pointer: coarse) {
+  .theme-cursor {
+    display: none;
+  }
+
+}
+
+@media (max-width: 700px) {
+  .chapter-nav {
+    gap: 2px;
+  }
+
+  .chapter-nav a {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .chapter-node,
+  .chapter-nav a:nth-child(odd) .chapter-node,
+  .chapter-nav a:nth-child(even) .chapter-node {
+    width: 26px;
+    height: 26px;
+  }
+
+  .chapter-nav a.is-active .chapter-node,
+  body.nav-on-light .chapter-nav a.is-active .chapter-node,
+  .chapter-nav a.is-active:hover .chapter-node,
+  body.nav-on-light .chapter-nav a.is-active:hover .chapter-node {
+    transform: translateY(-2px) scale(1.08);
   }
 }

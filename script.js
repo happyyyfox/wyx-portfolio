@@ -149,27 +149,49 @@ navigationLinks.forEach((link) => {
 
 function activateSection(sectionId) {
   navigationLinks.forEach((link) => {
-    link.classList.toggle("is-active", link.getAttribute("href") === sectionId);
+    const isActive = link.getAttribute("href") === sectionId;
+    link.classList.toggle("is-active", isActive);
+    if (isActive) {
+      link.setAttribute("aria-current", "location");
+    } else {
+      link.removeAttribute("aria-current");
+    }
   });
 }
 
-if ("IntersectionObserver" in window) {
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      const visibleEntry = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+const trackedSections = [...sectionMap.entries()];
+let sectionUpdateFrame = null;
 
-      if (visibleEntry) activateSection(`#${visibleEntry.target.id}`);
-    },
-    {
-      rootMargin: "-28% 0px -56% 0px",
-      threshold: [0.02, 0.12, 0.28],
-    },
-  );
+function updateActiveSection() {
+  if (!trackedSections.length) return;
 
-  sectionMap.forEach((section) => sectionObserver.observe(section));
+  const viewportMarker = window.innerHeight * 0.34;
+  let activeSectionId = trackedSections[0][0];
+
+  trackedSections.forEach(([sectionId, section]) => {
+    if (section.getBoundingClientRect().top <= viewportMarker) {
+      activeSectionId = sectionId;
+    }
+  });
+
+  const reachedPageEnd = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+  if (reachedPageEnd) activeSectionId = trackedSections.at(-1)[0];
+
+  activateSection(activeSectionId);
 }
+
+function requestSectionUpdate() {
+  if (sectionUpdateFrame !== null) return;
+
+  sectionUpdateFrame = window.requestAnimationFrame(() => {
+    updateActiveSection();
+    sectionUpdateFrame = null;
+  });
+}
+
+updateActiveSection();
+window.addEventListener("scroll", requestSectionUpdate, { passive: true });
+window.addEventListener("resize", requestSectionUpdate);
 
 function updateHeader() {
   siteHeader?.classList.remove("is-scrolled");
@@ -178,6 +200,26 @@ function updateHeader() {
 updateHeader();
 
 const shoreStage = document.querySelector(".shore-stage");
+const themeCursor = document.querySelector(".theme-cursor");
+
+const finePointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+if (themeCursor && finePointerQuery.matches) {
+  document.documentElement.classList.add("has-theme-cursor");
+
+  window.addEventListener("pointermove", (event) => {
+    const shoreTop = shoreStage?.getBoundingClientRect().top ?? Number.POSITIVE_INFINITY;
+    const isOnShore = event.clientY >= shoreTop;
+
+    themeCursor.classList.toggle("is-shore", isOnShore);
+    themeCursor.classList.add("is-visible");
+    themeCursor.style.transform = `translate3d(${event.clientX - 10}px, ${event.clientY - 8}px, 0)`;
+  }, { passive: true });
+
+  document.addEventListener("mouseout", (event) => {
+    if (!event.relatedTarget) themeCursor.classList.remove("is-visible");
+  });
+}
 
 function updateNavigationTone() {
   if (!shoreStage) return;
@@ -192,3 +234,54 @@ window.addEventListener("resize", updateNavigationTone);
 
 const currentYear = document.querySelector("[data-current-year]");
 if (currentYear) currentYear.textContent = String(new Date().getFullYear());
+
+const projectPreviews = [...document.querySelectorAll(".project-preview")];
+const previewMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const previewClock = () => Date.now();
+const schedulePreviewFrame = (callback) => window.setTimeout(() => callback(previewClock()), 16);
+const cancelPreviewFrame = window.clearTimeout.bind(window);
+
+projectPreviews.forEach((preview) => {
+  let animationFrame = null;
+  let lastFrame = 0;
+  let direction = 1;
+  let isPointerInside = false;
+
+  const animate = (timestamp) => {
+    const maxScroll = preview.scrollWidth - preview.clientWidth;
+    const canAnimate = maxScroll > 1 && !previewMotionQuery.matches && !document.hidden && isPointerInside;
+
+    if (canAnimate && lastFrame) {
+      const nextPosition = preview.scrollLeft + direction * ((timestamp - lastFrame) * 0.08);
+
+      if (nextPosition >= maxScroll) {
+        preview.scrollLeft = maxScroll;
+        direction = -1;
+      } else if (nextPosition <= 0) {
+        preview.scrollLeft = 0;
+        direction = 1;
+      } else {
+        preview.scrollLeft = nextPosition;
+      }
+    }
+
+    lastFrame = timestamp;
+    animationFrame = schedulePreviewFrame(animate);
+  };
+
+  preview.addEventListener("pointerenter", () => {
+    isPointerInside = true;
+  });
+  preview.addEventListener("pointerleave", () => {
+    isPointerInside = false;
+  });
+  preview.addEventListener("focusin", () => {
+    isPointerInside = true;
+  });
+  preview.addEventListener("focusout", () => {
+    isPointerInside = false;
+  });
+
+  animationFrame = schedulePreviewFrame(animate);
+  window.addEventListener("pagehide", () => cancelPreviewFrame(animationFrame), { once: true });
+});

@@ -9,8 +9,8 @@
       content="万羽旋的个人作品集与简历，展示 AI 产品、数据平台、科研与工程实践。"
     />
     <title>welcome!</title>
-    <link rel="stylesheet" href="styles.css?v=20260713-5" />
-    <script src="script.js?v=20260713-5" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260808-11" />
+    <script src="script.js?v=20260808-5" defer></script>
   </head>
   <body class="lang-zh">
     <a class="skip-link" href="#main-content">
@@ -91,6 +91,8 @@
         <span data-lang="en">Awards</span>
       </a>
     </nav>
+
+    <div class="theme-cursor" aria-hidden="true"></div>
 
     <main id="main-content">
       <section class="hero" id="profile" aria-labelledby="hero-title-zh">
@@ -180,7 +182,7 @@
           <div class="experience-list">
             <article class="experience-card reveal">
               <div class="experience-meta">
-                <time>2026.05 — 2026.07</time>
+                <time>2026.05 — 2026.08</time>
                 <span data-lang="zh">深圳</span>
                 <span data-lang="en">Shenzhen</span>
               </div>
@@ -189,21 +191,19 @@
                   <div>
                     <h3 data-lang="zh">腾讯</h3>
                     <h3 data-lang="en">Tencent</h3>
-                    <p data-lang="zh">产品策划实习生 · 腾讯云</p>
-                    <p data-lang="en">Product Planning Intern · Tencent Cloud</p>
+                    <p data-lang="zh">产品策划实习生 · 腾讯云培训与认证</p>
+                    <p data-lang="en">Product Planning Intern · Tencent Cloud Training &amp; Certification</p>
                   </div>
                 </div>
                 <ul data-lang="zh">
-                  <li>梳理认证浏览、报名、课程学习、考试预约、正式考试和分数查询的完整用户链路，输出标准化 SOP 并定位体验断点。</li>
-                  <li>主导认证官网的信息架构与功能界面重构，借助 AI 工具完成高保真可交互 Demo，为内部评审和 UI 设计提供参考。</li>
-                  <li>搭建考试指南文档体系，统一模板并集中管理备考资料；完成认证竞品的含金量与价格体系调研，支持定位与定价讨论。</li>
-                  <li>结合大语言模型、Knot、RAG 资料库与 BERT 模型，参与构建 AI 判题工作流，提升出题质量。</li>
+                  <li><strong>AI 自动化走查工具设计与开发：</strong>针对走查试题效率低、标准不一致的问题，设计并开发基于课程证据的 AI 自动化走查工具；通过规则引擎检查题目规范与题库结构，利用本地向量模型识别语义重复，并基于 RAG 验证课件覆盖度和答案依据，输出可溯源的结构化审核报告，支撑认证题库质量管控。</li>
+                  <li><strong>认证官网重构：</strong>围绕用户从认证浏览、报名学习到考试查分的全链路开展功能走查，沉淀流程规范与问题清单；基于用户决策路径及业务需求重构官网信息架构与核心页面，搭建高保真可交互原型，推动方案评审与 UI 落地。</li>
+                  <li><strong>内容标准化与竞品分析：</strong>针对备考资料分散、查找成本高的问题，设计考试指南统一入口，制定内容模板与规范并推动上线；调研主要厂商的认证体系、等级、定价等，搭建认证看板，为认证定位与定价策略调整提供数据支持。</li>
                 </ul>
                 <ul data-lang="en">
-                  <li>Mapped the end-to-end certification journey from browsing to score lookup, produced a standardized SOP, and identified experience gaps.</li>
-                  <li>Redesigned the certification website's information architecture and interfaces, creating a high-fidelity interactive demo with AI tools for reviews and UI handoff.</li>
-                  <li>Built a centralized exam-guide documentation system and researched competitor value and pricing to support positioning discussions.</li>
-                  <li>Contributed to an AI grading workflow using LLMs, Knot, a RAG knowledge base, and BERT to improve question quality.</li>
+                  <li><strong>AI-powered automated review tool:</strong> Designed and developed a course-evidence-based review tool to improve question-checking efficiency and consistency. Combined a rule engine for format and bank-structure validation, a local embedding model for semantic duplication detection, and RAG for courseware coverage and answer-evidence verification, producing traceable structured audit reports for certification quality control.</li>
+                  <li><strong>Certification website redesign:</strong> Audited the full journey from certification discovery and enrollment to learning, testing, and score lookup; documented workflows and issue lists. Reworked the information architecture and core pages around user decisions and business needs, delivered a high-fidelity interactive prototype, and advanced design review and UI implementation.</li>
+                  <li><strong>Content standardization and competitive analysis:</strong> Designed a unified exam-guide entry point, established content templates and standards, and drove launch. Researched major vendors' certification systems, levels, and pricing, then built a certification dashboard to support positioning and pricing decisions.</li>
                 </ul>
               </div>
             </article>
@@ -224,14 +224,12 @@
                   </div>
                 </div>
                 <ul data-lang="zh">
-                  <li>针对中国版新功能用户手册缺失、英文文档汉化量大与术语不一致等问题，梳理文档生产与本地化流程。</li>
-                  <li>深度体验产品功能并撰写新功能用户手册，使用 Markdown 标准化编辑、Git 管理版本，完成手册自动化上传与部署。</li>
-                  <li>调用大模型 API，设计 Prompt 与 RAG 策略并搭建工作流，实现海量英文文档的高质量自动化汉化，降低人工成本并统一专业术语。</li>
+                  <li><strong>AI 翻译工具设计与开发：</strong>针对英文手册体量大、译文术语难统一的问题，建立术语库并设计 Prompt、RAG 和回环校验策略，搭建 AI 翻译工作流，提升文档翻译的一致性与效率。</li>
+                  <li><strong>文档创作与部署：</strong>针对新功能说明缺失、用户上手成本高的问题，梳理功能逻辑与操作路径，采用 Markdown 进行标准化编辑、Git 进行版本管理，完成用户文档撰写与上线部署。</li>
                 </ul>
                 <ul data-lang="en">
-                  <li>Mapped the documentation and localization workflow to address missing manuals, large-scale translation needs, and inconsistent technical terminology.</li>
-                  <li>Tested product features in depth, wrote new-feature manuals in Markdown, managed versions with Git, and completed automated upload and deployment.</li>
-                  <li>Built an LLM-powered localization workflow using model APIs, targeted prompting, and RAG to improve quality, reduce manual effort, and standardize terminology.</li>
+                  <li><strong>AI translation tool design and development:</strong> Built a terminology library and designed prompting, RAG, and iterative validation strategies for large English manuals with inconsistent terminology, creating an AI translation workflow that improved consistency and efficiency.</li>
+                  <li><strong>Documentation and deployment:</strong> Mapped feature logic and user flows to address missing new-feature guidance and high onboarding costs. Standardized editing with Markdown, managed versions with Git, and completed user-documentation authoring and production deployment.</li>
                 </ul>
               </div>
             </article>
@@ -247,21 +245,17 @@
                   <div>
                     <h3 data-lang="zh">北京智源人工智能研究院</h3>
                     <h3 data-lang="en">Beijing Academy of Artificial Intelligence</h3>
-                    <p data-lang="zh">产品经理实习生 · 数据平台</p>
-                    <p data-lang="en">Product Manager Intern · Data Platform</p>
+                    <p data-lang="zh">产品经理实习生 · 数据平台部门</p>
+                    <p data-lang="en">Product Manager Intern · Data Platform Department</p>
                   </div>
                 </div>
                 <ul data-lang="zh">
-                  <li>围绕现有数据平台功能不足、客户需求与市场推广需要，开展产品研究与功能规划。</li>
-                  <li>分析 TwelveLabs 的用户场景与盈利模式，为智源智搜平台设计提供参考。</li>
-                  <li>设计数据集上传、数据资产统计、用户行为统计、数据采集与自定义数据集等功能，绘制原型并撰写 PRD。</li>
-                  <li>设计用户反馈与需求调研问卷，参与 8+ 场需求评审会和项目进度会。</li>
+                  <li><strong>数据平台核心功能设计：</strong>围绕数据集上传、采集、资产统计与用户行为分析等需求，完成产品原型设计与 PRD 撰写，完善数据平台能力。</li>
+                  <li><strong>竞品调研：</strong>围绕 TwelveLabs 的目标用户、核心使用场景、产品能力及商业化路径开展竞品拆解，提炼可借鉴的产品策略，为智源智搜的平台功能规划与市场定位提供参考。</li>
                 </ul>
                 <ul data-lang="en">
-                  <li>Conducted product research and feature planning to close functional gaps and support client and go-to-market needs.</li>
-                  <li>Analyzed TwelveLabs' user scenarios and business model to inform the BAAI search platform.</li>
-                  <li>Designed dataset upload, asset statistics, behavior analytics, data collection, and custom datasets; delivered prototypes and PRDs.</li>
-                  <li>Designed user feedback and demand surveys and joined 8+ requirement reviews and progress meetings.</li>
+                  <li><strong>Core data-platform feature design:</strong> Designed product prototypes and wrote PRDs for dataset upload, collection, asset statistics, and user-behavior analytics, strengthening the platform's core capabilities.</li>
+                  <li><strong>Competitive research:</strong> Analyzed TwelveLabs' target users, core scenarios, product capabilities, and commercialization path; distilled applicable product strategies to inform BAAI Search's feature planning and market positioning.</li>
                 </ul>
               </div>
             </article>
@@ -278,35 +272,43 @@
           </header>
 
           <div class="project-grid">
-            <article class="project-card project-card--lead reveal">
-              <div class="project-topline">
-                <span>2025.10 — 2026.12</span>
+            <article class="project-card project-card--lead project-card--with-preview reveal">
+              <figure class="project-preview" tabindex="0" aria-label="Unity 3D 模拟新猫养成游戏截图">
+                <img src="assets/projects/unity-cat-care.png" alt="Unity 3D 模拟新猫养成游戏中的猫咪房间场景">
+              </figure>
+              <div class="project-content">
+                <div class="project-topline">
+                  <span>2025.10 — 2025.12</span>
+                </div>
+                <p class="project-role" data-lang="zh">游戏策划 + 游戏开发</p>
+                <p class="project-role" data-lang="en">Game Design + Game Development</p>
+                <h3 class="project-title--compact" data-lang="zh">Unity 3D 模拟新猫养成游戏<span class="project-title-suffix">（严肃游戏）</span></h3>
+                <h3 data-lang="en">Unity 3D Cat-Raising Simulation (Serious Game)</h3>
+                <p data-lang="zh">面向有养猫意愿但暂不具备饲养条件、且缺乏养宠知识的年轻用户，基于 Unity 3D 开发科学养宠模拟游戏，通过情境化任务与行为反馈，让玩家在体验养成乐趣的同时理解基础养护知识。</p>
+                <p data-lang="en">A Unity 3D science-based cat-care simulation for young users who want a cat but currently lack suitable conditions or practical knowledge. Contextual tasks and behavioral feedback combine the enjoyment of raising a virtual pet with foundational care education.</p>
+                <ul data-lang="zh">
+                  <li><strong>技术选型：</strong>Unity 3D（URP）、C#。</li>
+                  <li><strong>养成系统与行为反馈设计：</strong>围绕健康、清洁、情绪等状态指标建立多维养成模型，将喂食、清理猫砂、互动及驱虫治疗等行为映射为猫咪状态变化，并通过即时反馈呈现不同养护行为的影响。</li>
+                  <li><strong>任务关卡与游戏实现：</strong>将养宠知识拆解为模块化任务，构建“任务引导—玩家操作—状态反馈—关卡解锁”的游戏循环；完成场景、核心玩法逻辑、数值系统及 UI 交互开发，实现可完整体验的游戏原型。</li>
+                </ul>
+                <ul data-lang="en">
+                  <li><strong>Technology:</strong> Unity 3D (URP) and C#.</li>
+                  <li><strong>Progression system and behavioral feedback:</strong> Built a multidimensional progression model around health, cleanliness, and emotional state. Mapped feeding, litter cleaning, interaction, and deworming treatment to changes in the cat's condition, with immediate feedback showing the impact of each care decision.</li>
+                  <li><strong>Task levels and game implementation:</strong> Broke cat-care knowledge into modular tasks and created a loop of task guidance, player action, state feedback, and level unlocking. Developed the scenes, core gameplay logic, numerical systems, and UI interactions into a fully playable prototype.</li>
+                </ul>
+                <a class="repo-link" href="https://github.com/happyyyfox/serious-game-final" target="_blank" rel="noreferrer">
+                  <span data-lang="zh">查看 GitHub 仓库</span>
+                  <span data-lang="en">View GitHub repository</span>
+                  <i aria-hidden="true">↗</i>
+                </a>
+                <div class="tag-row"><span>Unity 3D</span><span>URP</span><span>C#</span></div>
               </div>
-              <p class="project-role" data-lang="zh">游戏策划 + 游戏开发</p>
-              <p class="project-role" data-lang="en">Game Design + Game Development</p>
-              <h3 data-lang="zh">Unity 3D 模拟养猫严肃游戏</h3>
-              <h3 data-lang="en">Unity 3D Cat-care Serious Game</h3>
-              <p data-lang="zh">面向渴望养猫却受现实条件限制、养宠知识不足的年轻人，以沉浸式互动和寓教于乐的关卡设计传递科学养宠知识。</p>
-              <p data-lang="en">An immersive cat-care simulation for young people constrained by real-life conditions or limited knowledge, combining realistic interaction with educational level design.</p>
-              <ul data-lang="zh">
-                <li>基于 Unity 3D（URP）与 C#，设计多维数值养成、模块化关卡和任务系统。</li>
-                <li>独立完成从策划、场景搭建、代码编写到 UI 交互的完整开发流程。</li>
-                <li>覆盖喂食、清理猫砂、互动解压与驱虫治疗等核心体验，逻辑闭环且运行稳定。</li>
-              </ul>
-              <ul data-lang="en">
-                <li>Built with Unity 3D (URP) and C#, including multi-dimensional growth, modular levels, and task systems.</li>
-                <li>Completed the full workflow from planning and scene building to coding and UI interaction.</li>
-                <li>Delivered feeding, litter cleaning, stress-relief interaction, and treatment flows in a stable gameplay loop.</li>
-              </ul>
-              <a class="repo-link" href="https://github.com/happyyyfox/serious-game-final" target="_blank" rel="noreferrer">
-                <span data-lang="zh">查看 GitHub 仓库</span>
-                <span data-lang="en">View GitHub repository</span>
-                <i aria-hidden="true">↗</i>
-              </a>
-              <div class="tag-row"><span>Unity 3D</span><span>URP</span><span>C#</span></div>
             </article>
 
-            <article class="project-card project-card--collapsible reveal">
+            <article class="project-card project-card--collapsible project-card--with-preview reveal">
+              <figure class="project-preview project-preview--center" tabindex="0" aria-label="人工智能实时翻译 App 截图">
+                <img src="assets/projects/realtime-translation.png" alt="人工智能实时翻译工具的界面截图">
+              </figure>
               <details>
                 <summary>
                   <div class="project-topline"><span>2025.10 — 2025.11</span></div>
@@ -329,7 +331,10 @@
               </details>
             </article>
 
-            <article class="project-card project-card--collapsible reveal">
+            <article class="project-card project-card--collapsible project-card--with-preview reveal">
+              <figure class="project-preview" tabindex="0" aria-label="智慧绿色港口云服务平台截图">
+                <img src="assets/projects/green-port-platform.png" alt="智慧绿色港口云服务平台的订单管理界面截图">
+              </figure>
               <details>
                 <summary>
                   <div class="project-topline"><span>2023.01 — 2024.09</span></div>
@@ -357,7 +362,10 @@
               </details>
             </article>
 
-            <article class="project-card project-card--collapsible reveal">
+            <article class="project-card project-card--collapsible project-card--with-preview reveal">
+              <figure class="project-preview" tabindex="0" aria-label="校级社团报名面试系统截图">
+                <img src="assets/projects/club-management.png" alt="校级社团报名面试系统的移动端界面截图">
+              </figure>
               <details>
                 <summary>
                   <div class="project-topline"><span>2022.05 — 2022.08</span></div>
