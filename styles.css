@@ -1768,6 +1768,63 @@ li::marker {
   }
 }
 
+/* Invisible hit slop for the illustrated cursor; visual sizes stay unchanged. */
+.video-toggle,
+.lang-button {
+  position: relative;
+}
+
+.video-toggle::after,
+.lang-button::before {
+  position: absolute;
+  content: "";
+}
+
+.video-toggle::after {
+  inset: -10px;
+}
+
+.lang-button::before {
+  top: -10px;
+  bottom: -10px;
+}
+
+.lang-button:first-child::before {
+  right: 0;
+  left: -10px;
+}
+
+.lang-button:last-child::before {
+  right: -10px;
+  left: 0;
+}
+
+.shore-stage .project-status {
+  align-items: center;
+  gap: 6px;
+  color: var(--shore-sea);
+}
+
+.shore-stage .project-topline--status {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+}
+
+body.lang-zh .shore-stage .project-status[data-lang="zh"],
+body.lang-en .shore-stage .project-status[data-lang="en"] {
+  display: inline-flex !important;
+}
+
+.shore-stage .project-status::before {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px rgba(62, 111, 154, 0.38);
+  content: "";
+}
+
 /* Current resume: a quieter paper system with an ocean-blue accent. */
 :root {
   --shore-ink: #293842;
